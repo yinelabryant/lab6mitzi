@@ -22,11 +22,6 @@ def generate_password_endpoint():
     # Devuelve la contraseña generada como una respuesta JSON
     return jsonify({'password': password})
 
-# Define una ruta de prueba
-@app.route('/')
-def hello_world():
-    return 'Hello, World!'
-
 # Inicia la aplicación Flask 
 if __name__ == '__main__':
     app.run()
