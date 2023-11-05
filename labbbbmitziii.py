@@ -45,18 +45,18 @@ def generate_password_endpoint():
     # Llama a la función generate_password para obtener una contraseña aleatoria
     password = generate_password()
     # Devuelve la contraseña generada como una respuesta JSON
-    return jsonify({'password': password})
+    return jsonify({'password': password}), 200
 
 @app.route('/verify_password', methods=['GET'])
 def verify_password_endpoint():
     password = request.args.get("password")
     score = VerifyPassword(password)
     if score >= 8:
-        return ({"puntaje": score, "mensaje": "Tu contrasena es excelente!"})
+        return jsonify({"puntaje": score, "mensaje": "Tu contrasena es excelente!"}), 200
     elif score >= 5:
-        return ({"puntaje": score, "mensaje": "Tu contrasena es buena, pero puede mejorar!"})
+        return jsonify({"puntaje": score, "mensaje": "Tu contrasena es buena, pero puede mejorar!"}), 200
     else:
-        return ({"puntaje": score, "mensaje": "Tu contrasena es mala, deberias cambiarla inmediatamente!"})
+        return jsonify({"puntaje": score, "mensaje": "Tu contrasena es mala, deberias cambiarla inmediatamente!"}), 200
 
 
 # Inicia la aplicación Flask 
